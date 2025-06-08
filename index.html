@@ -1,107 +1,121 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>사진공유 페이지</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #f7f7f7;
-        }
-
-        header {
-            background-color: #1f1f1f;
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 36px;
-            margin: 0;
-        }
-
-        header p {
-            font-size: 16px;
-            margin-top: 10px;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            padding: 40px;
-        }
-
-        .card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            width: 300px;
-            transition: transform 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .card-body {
-            padding: 15px;
-        }
-
-        .card-body h3 {
-            margin: 0;
-            font-size: 20px;
-        }
-
-        .card-body p {
-            margin-top: 5px;
-            font-size: 14px;
-            color: #555;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>레시피 & 쿠킹 블로그</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    .site-header { background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .site-header .container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+    .logo { font-size: 1.5rem; font-weight: bold; }
+    .main-nav .nav-list { list-style: none; display: flex; gap: 1rem; }
+    .main-nav .nav-list li a { text-decoration: none; color: #333; }
+    .nav-toggle { display: none; font-size: 1.5rem; background: none; border: none; cursor: pointer; }
+    .hero { position: relative; text-align: center; }
+    .hero-img { width: 100%; height: 400px; object-fit: cover; }
+    .hero-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 0.5rem; color: #fff; }
+    .category-filter { margin: 2rem 0; }
+    .category-list { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .category-list button { padding: 0.5rem 1rem; border: none; background: #eee; border-radius: 0.5rem; cursor: pointer; transition: background 0.3s; }
+    .category-list button:hover { background: #ddd; }
+    .recipe-grid .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .recipe-card { background: #fff; border-radius: 0.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; }
+    .card-img { width: 100%; height: 160px; object-fit: cover; }
+    .card-content { padding: 1rem; flex: 1; display: flex; flex-direction: column; }
+    .card-title { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .card-excerpt { font-size: 0.9rem; margin-bottom: 1rem; color: #555; flex: 1; }
+    .card-link { text-decoration: none; font-weight: bold; margin-top: auto; color: #007BFF; }
+    .site-footer { background: #f8f8f8; padding: 1rem 0; margin-top: 2rem; }
+    .site-footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .social-links { list-style: none; display: flex; gap: 1rem; }
+    .social-links a { text-decoration: none; color: #333; }
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .main-nav .nav-list { position: absolute; top: 100%; right: 0; background: #fff; flex-direction: column; width: 200px; transform: translateX(100%); transition: transform 0.3s ease; }
+      .main-nav.open .nav-list { transform: translateX(0); }
+    }
+  </style>
 </head>
 <body>
-
-<header>
-    <h1>사진공유 페이지</h1>
-    <p>사진을 공유합니다</p>
-</header>
-
-<div class="container">
-    <div class="card">
-        <img src="https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg" alt="푸른 바다">
-        <div class="card-body">
-            <h3>푸른 바다의 아름다움</h3>
-            <p>맑고 푸른 바다의 고요함과 웅장함을 담았습니다.</p>
-        </div>
+  <header class="site-header">
+    <div class="container">
+      <a href="#" class="logo">CookingBlog</a>
+      <nav class="main-nav">
+        <button class="nav-toggle" aria-label="메뉴 열기">☰</button>
+        <ul class="nav-list">
+          <li><a href="#recipes">레시피</a></li>
+          <li><a href="#categories">카테고리</a></li>
+          <li><a href="#about">소개</a></li>
+          <li><a href="#contact">문의</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <div class="card">
-        <img src="https://images.pexels.com/photos/34950/pexels-photo.jpg" alt="겨울 산">
-        <div class="card-body">
-            <h3>눈 덮인 겨울 산</h3>
-            <p>고요한 겨울 풍경 속에서 평화로움과 감성을 느낄 수 있는 사진입니다.</p>
-        </div>
+  <section class="hero">
+    <img src="https://source.unsplash.com/1200x600/?food" alt="완성 요리 사진" class="hero-img" loading="lazy" />
+    <div class="hero-text">
+      <h1>오늘은 어떤 요리를 해볼까요?</h1>
+      <p>간단한 한 끼부터 특별한 디저트까지, 다양한 레시피를 만나보세요.</p>
     </div>
+  </section>
 
-    <div class="card">
-        <img src="https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg" alt="들판">
-        <div class="card-body">
-            <h3>초록빛 들판의 여유</h3>
-            <p>자연의 싱그러움을 담은 초록빛 들판 사진입니다.</p>
-        </div>
+  <main class="container">
+    <section id="categories" class="category-filter">
+      <h2>카테고리</h2>
+      <ul class="category-list">
+        <li><button>한식</button></li>
+        <li><button>양식</button></li>
+        <li><button>디저트</button></li>
+        <li><button>채식</button></li>
+        <li><button>간식</button></li>
+      </ul>
+    </section>
+
+    <section id="recipes" class="recipe-grid">
+      <h2>추천 레시피</h2>
+      <div class="grid">
+        <article class="recipe-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9ZG0NPOXPYa49vBWnXva0Ymb1yiH31zA0Ow&s" alt="크림 파스타" class="card-img" loading="lazy" />
+          <div class="card-content">
+            <h3 class="card-title">크림 파스타</h3>
+            <p class="card-excerpt">부드러운 크림 소스와 알단테 파스타의 환상 조합.</p>
+            <a href="recipe1-detail.html" class="card-link">자세히 보기 →</a>
+          </div>
+        </article>
+        <article class="recipe-card">
+          <img src="https://i.ytimg.com/vi/tluoPxF6Lew/maxresdefault.jpg" alt="딸기 쇼트케이크" class="card-img" loading="lazy" />
+          <div class="card-content">
+            <h3 class="card-title">딸기 쇼트케이크</h3>
+            <p class="card-excerpt">달콤한 딸기와 부드러운 크림이 어우러진 디저트.</p>
+            <a href="recipe2-detail.html" class="card-link">자세히 보기 →</a>
+          </div>
+        </article>
+        <!-- 추가 카드들... -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 CookingBlog. All rights reserved.</p>
+      <ul class="social-links">
+        <li><a href="#" aria-label="Instagram">Instagram</a></li>
+        <li><a href="#" aria-label="YouTube">YouTube</a></li>
+        <li><a href="#" aria-label="Facebook">Facebook</a></li>
+      </ul>
     </div>
-</div>
+  </footer>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const navToggle = document.querySelector('.nav-toggle');
+      const mainNav = document.querySelector('.main-nav');
+      navToggle.addEventListener('click', () => mainNav.classList.toggle('open'));
+    });
+  </script>
 </body>
 </html>
